@@ -3,6 +3,12 @@
 	<groupId>com.JDBC</groupId>
 	<artifactId>JDBC</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<!-- Force Eclipse and Maven to use a Java 8 JDK compiler-->
+	<!-- https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-to-force-Maven-JDK-18-support-through-the-POM-file -->
+	<properties>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+	</properties>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
 		<dependency>
