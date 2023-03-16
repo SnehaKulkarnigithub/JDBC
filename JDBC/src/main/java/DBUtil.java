@@ -16,7 +16,7 @@ public class DBUtil {
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			e.printStackTrace();
 		}
 				  return con;
 		
