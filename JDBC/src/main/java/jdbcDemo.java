@@ -13,15 +13,17 @@ public class jdbcDemo {
 		
 		//Step 2: Connect with database using url , username and password
 		
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/advjavajdbc_01", "root", "root");
-		
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/employee", "root", "root");
+		System.out.println("Connection Successful");
 		//Step 3: create Statement
 		
 		Statement stmt=con.createStatement();
+		System.out.println("Statement created");
 		
 		//Step 4 : Execute query
 		
-		ResultSet rs=stmt.executeQuery("select * form emp");
+		ResultSet rs=stmt.executeQuery("select * from empdatails");
+		System.out.println("Query exhicuted");
 		
 		//Step 5 : Extract data
 		
