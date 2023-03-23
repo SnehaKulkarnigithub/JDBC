@@ -4,11 +4,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CRUDDemo {
-	public void insertEmployee(int empId, String empName, String empCity) throws SQLException {
-		EmployeeDetails ed = new EmployeeDetails(empId, empName, empCity);
-		String query = "insert into empdatails(empid ,empName, empcity)" + "values" + "(?,?,?);";
+	public void insertEmployee(EmployeeDetails ed) throws SQLException {
 		Connection con = DBUtil.getMySQLConnection();
-		PreparedStatement pst = con.prepareStatement(query);
+		PreparedStatement pst = con.prepareStatement("insert into empdatails(empid ,empName, empcity) values (?,?,?);");
 		pst.setInt(1, ed.getEmpId());
 		pst.setString(2, ed.getEmpName());
 		pst.setString(3, ed.getEmpCity());
@@ -21,9 +19,8 @@ public class CRUDDemo {
 	}
 
 	public void readEmployee() throws SQLException {
-		String query = "select * from empdatails;";
 		Connection con = DBUtil.getMySQLConnection();
-		PreparedStatement pst = con.prepareStatement(query);
+		PreparedStatement pst = con.prepareStatement("select * from empdatails;");
 		ResultSet rs = pst.executeQuery();
 		while (rs.next()) {
 			System.out.println(rs.getInt(1) + " | " + rs.getString(2) + " | " + rs.getString(3));
@@ -32,11 +29,9 @@ public class CRUDDemo {
 
 	}
 
-	public void updateEmployee(int empId, String empName, String empCity) throws SQLException {
-		EmployeeDetails ed = new EmployeeDetails(empId, empName, empCity);
-		String query = "update empdatails set empname=? , empcity=? where empid=" + ed.getEmpId() + ";";
+	public void updateEmployee(EmployeeDetails ed) throws SQLException {
 		Connection con = DBUtil.getMySQLConnection();
-		PreparedStatement pst = con.prepareStatement(query);
+		PreparedStatement pst = con.prepareStatement( "update empdatails set empname=? where empid=?;");
 		pst.setString(1, ed.getEmpName());
 		pst.setString(2, ed.getEmpCity());
 		if (pst.executeUpdate() > 0) {
@@ -49,11 +44,10 @@ public class CRUDDemo {
 
 	}
 
-	public void deleteEmployee(int empId, String empName, String empCity) throws SQLException {
-		EmployeeDetails ed = new EmployeeDetails(empId, empName, empCity);
-		String query = "delete from empdatails where empid=" + ed.getEmpId() + ";";
+	public void deleteEmployee(int empId) throws SQLException {
 		Connection con = DBUtil.getMySQLConnection();
-		PreparedStatement pst = con.prepareStatement(query);
+		PreparedStatement pst = con.prepareStatement("delete from empdatails where empid=?;");
+		pst.setInt(1, empId);
 		if (pst.executeUpdate() > 0) {
 			System.out.println("Record deleted Successfully");
 		} else {
