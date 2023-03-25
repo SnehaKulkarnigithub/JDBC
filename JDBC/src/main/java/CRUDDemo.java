@@ -35,9 +35,9 @@ public class CRUDDemo {
 		pst.setString(1, ed.getEmpName());
 		pst.setString(2, ed.getEmpCity());
 		if (pst.executeUpdate() > 0) {
-			System.out.println("Emp Updated");
+			System.out.println("Record Updated");
 		} else {
-			System.out.println("Emp Not Updated");
+			System.out.println("Record Not Updated");
 		}
 
 		con.close();
