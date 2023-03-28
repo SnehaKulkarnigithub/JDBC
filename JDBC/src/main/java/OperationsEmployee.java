@@ -6,13 +6,17 @@ public class OperationsEmployee {
 			//EmployeeDetails ed=new EmployeeDetails(9,"etyt","mumbai");
 				//cd.insertEmployee(ed);
 				
-				cd.readEmployee();
+				/* cd.readEmployee();
 				
 				EmployeeDetails ed1=new EmployeeDetails(10,"uyeiu","nagpur");
 				
 				cd.updateEmployee(ed1);
 			
 				cd.deleteEmployee(201);
+				*/
+				
+				CallableStat cs=new CallableStat();
+				cs.callable();
 				
 			}
 	catch (Exception e) {
